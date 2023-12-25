@@ -34,7 +34,7 @@ message Tag {
 message Article {
   string id = 1;
   string title = 2;
-  string content = 3;
+  string body = 3;
   string createdAt = 4;
   string updatedAt = 5;
 }

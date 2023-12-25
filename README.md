@@ -18,7 +18,7 @@ git submodule add https://github.com/miyamo2/blogproto
 
 ### Building gRPC server
 
-1. Initialize your repo & go module
+1. Initialize your repo & go module.
 
 ```sh
 mkdir myblog
@@ -28,18 +28,17 @@ git submodule add https://github.com/miyamo2/blogproto proto
 go mod init myblog
 ```
 
-2. Setup protoc-gen-go
+2. Setup protoc-gen-go.
 
 ```sh
 go install google.golang.org/grpc@latest
 go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
 ```
 
-3. Generate Message & Service.
+3. Generate message & service.
 
 ```sh
-cd ./proto
-protoc --go_out=../pb --go_opt=paths=source_relative \
- --go-grpc_out=../pb --go-grpc_opt=paths=source_relative \
- article.proto
+protoc --proto_path=./proto/article --go_out=. --go_opt=Marticle.proto=internal/pb --go-grpc_out=. --go-grpc_opt=Marticle.proto=internal/pb ./proto/article/article.proto
+protoc --proto_path=./proto/tag --go_out=. --go_opt=Mtag.proto=internal/pb --go-grpc_out=. --go-grpc_opt=Mtag.proto=internal/pb ./proto/tag/tag.proto
+protoc --proto_path=./proto/blogging_event --go_out=. --go_opt=Mblogging_event.proto=internal/pb --go-grpc_out=. --go-grpc_opt=Mblogging_event.proto=internal/pb ./proto/blogging_event/blogging_event.proto
 ```

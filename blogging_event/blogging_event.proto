@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+package blogging_event;
+
+service BloggingEventService {
+  rpc CreateArticle(CreateArticleRequest) returns (BloggingEventResponse);
+  rpc UpdateTitle(UpdateTitleRequest) returns (BloggingEventResponse);
+  rpc UpdateContent(UpdateContentRequest) returns (BloggingEventResponse);
+  rpc UpdateThumbnail(UpdateThumbnailRequest) returns (BloggingEventResponse);
+  rpc AttachTag(AttachTagRequest) returns (BloggingEventResponse);
+  rpc DetachTag(DetachTagRequest) returns (BloggingEventResponse);
+}
+
+message CreateArticleRequest {
+  string title = 1;
+  string content = 2;
+  Thumbnail thumbnail = 3;
+  repeated string tagNames = 4;
+}
+
+message Thumbnail {
+  string name = 1;
+  bytes file = 2;
+}
+
+message UpdateTitleRequest {
+  string id = 1;
+  string title = 2;
+}
+
+message UpdateContentRequest {
+  string id = 1;
+  string content = 2;
+}
+
+message UpdateThumbnailRequest {
+  string id = 1;
+  Thumbnail thumbnail = 2;
+}
+
+message AttachTagRequest {
+  string id = 1;
+  string tagName = 2;
+}
+
+message DetachTagRequest {
+  string id = 1;
+  string tagName = 2;
+}
+
+message BloggingEventResponse {
+  string eventId = 1;
+}

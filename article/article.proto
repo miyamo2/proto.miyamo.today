@@ -7,20 +7,20 @@ import "google/protobuf/empty.proto";
 service ArticleService {
   rpc GetArticleById(GetArticleByIdRequest) returns (SingleArticleResponse);
   rpc GetAllArticles(google.protobuf.Empty) returns (MultipleArticleResponse);
-  rpc GetNextPageArticles(GetNextPageArticlesRequest) returns (MultipleArticleResponse);
-  rpc GetPrevPageArticles(GetPrevPageArticlesRequest) returns (MultipleArticleResponse);
+  rpc GetNextArticles(GetNextArticlesRequest) returns (MultipleArticleResponse);
+  rpc GetPrevArticles(GetPrevArticlesRequest) returns (MultipleArticleResponse);
 }
 
 message GetArticleByIdRequest {
   string id = 1;
 }
 
-message GetNextPageArticlesRequest {
+message GetNextArticlesRequest {
   int32 first = 1;
   optional string after = 2;
 }
 
-message GetPrevPageArticlesRequest {
+message GetPrevArticlesRequest {
   int32 last = 1;
   optional string before = 2;
 }

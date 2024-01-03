@@ -5,10 +5,10 @@ package tag;
 import "google/protobuf/empty.proto";
 
 service TagService {
-  rpc GetTagById(GetTagByIdRequest) returns (SingleTagResponse);
-  rpc GetAllTags(google.protobuf.Empty) returns (MultipleTagResponse);
-  rpc GetNextTags(GetNextTagsRequest) returns (MultipleTagResponse);
-  rpc GetPrevTags(GetPrevTagsRequest) returns (MultipleTagResponse);
+  rpc GetTagById(GetTagByIdRequest) returns (GetTagByIdResponse);
+  rpc GetAllTags(google.protobuf.Empty) returns (GetAllTagsResponse);
+  rpc GetNextTags(GetNextTagsRequest) returns (GetNextTagResponse);
+  rpc GetPrevTags(GetPrevTagsRequest) returns (GetPrevTagResponse);
 }
 
 message GetTagByIdRequest {
@@ -39,10 +39,20 @@ message Article {
   string updatedAt = 5;
 }
 
-message SingleTagResponse {
+message GetTagByIdResponse {
   Tag tag = 1;
 }
 
-message MultipleTagResponse {
+message GetAllTagsResponse {
   repeated Tag tags = 1;
+}
+
+message GetNextTagResponse {
+  repeated Tag tags = 1;
+  bool stillExists = 2;
+}
+
+message GetPrevTagResponse {
+  repeated Tag tags = 1;
+  bool stillExists = 2;
 }

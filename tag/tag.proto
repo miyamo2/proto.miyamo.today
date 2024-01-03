@@ -7,20 +7,20 @@ import "google/protobuf/empty.proto";
 service TagService {
   rpc GetTagById(GetTagByIdRequest) returns (SingleTagResponse);
   rpc GetAllTags(google.protobuf.Empty) returns (MultipleTagResponse);
-  rpc GetNextPageTags(GetNextPageTagsRequest) returns (MultipleTagResponse);
-  rpc GetPrevPageTags(GetPrevPageTagsRequest) returns (MultipleTagResponse);
+  rpc GetNextTags(GetNextTagsRequest) returns (MultipleTagResponse);
+  rpc GetPrevTags(GetPrevTagsRequest) returns (MultipleTagResponse);
 }
 
 message GetTagByIdRequest {
   string id = 1;
 }
 
-message GetNextPageTagsRequest {
+message GetNextTagsRequest {
   int32 first = 1;
   optional string after = 2;
 }
 
-message GetPrevPageTagsRequest {
+message GetPrevTagsRequest {
   int32 last = 1;
   optional string before = 2;
 }

@@ -5,10 +5,10 @@ package article;
 import "google/protobuf/empty.proto";
 
 service ArticleService {
-  rpc GetArticleById(GetArticleByIdRequest) returns (SingleArticleResponse);
-  rpc GetAllArticles(google.protobuf.Empty) returns (MultipleArticleResponse);
-  rpc GetNextArticles(GetNextArticlesRequest) returns (MultipleArticleResponse);
-  rpc GetPrevArticles(GetPrevArticlesRequest) returns (MultipleArticleResponse);
+  rpc GetArticleById(GetArticleByIdRequest) returns (GetArticleByIdResponse);
+  rpc GetAllArticles(google.protobuf.Empty) returns (GetAllArticlesResponse);
+  rpc GetNextArticles(GetNextArticlesRequest) returns (GetNextArticlesResponse);
+  rpc GetPrevArticles(GetPrevArticlesRequest) returns (GetPrevArticlesResponse);
 }
 
 message GetArticleByIdRequest {
@@ -40,11 +40,20 @@ message Tag {
   string name = 2;
 }
 
-message SingleArticleResponse {
+message GetArticleByIdResponse {
   Article article = 1;
 }
 
-message MultipleArticleResponse {
+message GetAllArticlesResponse {
   repeated Article articles = 1;
 }
 
+message GetNextArticlesResponse {
+  repeated Article articles = 1;
+  bool stillExists = 2;
+}
+
+message GetPrevArticlesResponse {
+  repeated Article articles = 1;
+  bool stillExists = 2;
+}

@@ -16,13 +16,13 @@ message GetArticleByIdRequest {
 }
 
 message GetNextPageArticlesRequest {
-  string first = 1;
-  optional int32 after = 2;
+  int32 first = 1;
+  optional string after = 2;
 }
 
 message GetPrevPageArticlesRequest {
-  string last = 1;
-  optional int32 before = 2;
+  int32 last = 1;
+  optional string before = 2;
 }
 
 message Article {

@@ -4,39 +4,62 @@ package blogging_event;
 
 service BloggingEventService {
   rpc CreateArticle(CreateArticleRequest) returns (BloggingEventResponse);
-  rpc UpdateArticle(UpdateArticleRequest) returns (BloggingEventResponse);
+  rpc UpdateArticleTitle(UpdateArticleTitleRequest) returns (BloggingEventResponse);
+  rpc UpdateArticleBody(UpdateArticleBodyRequest) returns (BloggingEventResponse);
+  rpc UpdateArticleThumbnail(UpdateArticleThumbnailRequest) returns (BloggingEventResponse);
   rpc AttachTag(AttachTagRequest) returns (BloggingEventResponse);
   rpc DetachTag(DetachTagRequest) returns (BloggingEventResponse);
+  rpc UploadImage(stream UploadImageRequest) returns (UploadImageResponse);
 }
 
 message CreateArticleRequest {
   string title = 1;
   string body = 2;
-  Thumbnail thumbnail = 3;
+  string thumbnailUrl = 3;
   repeated string tagNames = 4;
 }
 
-message Thumbnail {
-  string name = 1;
-  bytes file = 2;
+message UpdateArticleTitleRequest {
+  string id = 1;
+  string title = 2;
 }
 
-message UpdateArticleRequest {
-  string title = 1;
+message UpdateArticleBodyRequest {
+  string id = 1;
   string body = 2;
-  Thumbnail thumbnail = 3;
+}
+
+message UpdateArticleThumbnailRequest {
+  string id = 1;
+  string thumbnailUrl = 2;
 }
 
 message AttachTagRequest {
   string id = 1;
-  string tagName = 2;
+  repeated string tagNames = 2;
 }
 
 message DetachTagRequest {
   string id = 1;
-  string tagName = 2;
+  repeated string tagNames = 2;
 }
 
 message BloggingEventResponse {
   string eventId = 1;
+}
+
+message UploadImageRequest {
+  oneof value {
+    Meta meta = 1;
+    bytes data = 2;
+  }
+}
+
+message Meta {
+  string name = 1;
+}
+
+message UploadImageResponse {
+  bool success = 1;
+  optional string url = 2;
 }

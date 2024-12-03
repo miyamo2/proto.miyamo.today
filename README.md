@@ -5,13 +5,13 @@ protobuf for simply blog application.
 ## Installation
 
 ```sh
-git clone https://github.com/miyamo2/blogproto
+git clone https://github.com/miyamo2/proto.miyamo.today
 ```
 
 as submodule
 
 ```sh
-git submodule add https://github.com/miyamo2/blogproto
+git submodule add https://github.com/miyamo2/proto.miyamo.today
 ```
 
 ## Usage
@@ -24,7 +24,7 @@ git submodule add https://github.com/miyamo2/blogproto
 mkdir myblog
 cd ./myblog
 git init
-git submodule add https://github.com/miyamo2/blogproto proto
+git submodule add https://github.com/miyamo2/proto.miyamo.today proto
 go mod init myblog
 ```
 

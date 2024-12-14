@@ -45,7 +45,8 @@ message DetachTagRequest {
 }
 
 message BloggingEventResponse {
-  string eventId = 1;
+  string articleId = 1;
+  string eventId = 2;
 }
 
 message UploadImageRequest {

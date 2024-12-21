@@ -1,4 +1,4 @@
-## blogproto
+## proto.miyamo.today
 
 protobuf for simply blog application.
 
